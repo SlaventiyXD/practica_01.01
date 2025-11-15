@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Редактирование{% endblock %}
+
+{% block content %}
+
+<section>
+    <h2 style="padding: 0% 20%; font-size: 32px;">Профиль партнера: {{partner.name}}</h2>
+</section>
+<form method="post">
+    {% csrf_token %}
+
+    <section style="padding: 0px 0% 20px" class="text">
+        <div class="text-input">
+            <div>
+                <p class="text">Партнер</p>
+                <input type="text" id="name" name="name" value="{{ partner.name }}" class="input-size" required>
+            </div>
+            <div>
+                <p class="text">ФИО директора</p>
+                <input type="text" id="director" name="director" value="{{ partner.director }}" class="input-size" required>
+            </div>
+        </div>
+        <div class="text-input">
+            <div>
+                <p class="text">Тип партнера</p>
+                <select name="type_partners" class="input-size" required>
+                    <option value="">Выберите тип</option>
+                    {% for type in type_partners %}
+                    <option value="{{ type.id }}"
+                            {% if partner.type_partner.id == type.id %}selected{% endif %}>
+                        {{ type.name }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <p class="text">Телефон</p>
+                <input type="text" id="phone_num" name="phone_num" value="{{ partner.phone_num }}" class="input-size" required>
+            </div>
+        </div>
+
+        <div class="text-input">
+            <div>
+                <p class="text">Рейтинг</p>
+                <input type="number" id="rating" name="rating" value="{{ partner.rating }}" class="input-size" required>
+            </div>
+            <div>
+                <p class="text">Email</p>
+                <input type="email" id="email" name="email" value="{{ partner.email }}" class="input-size" required>
+            </div>
+        </div>
+        <div class="text-input">
+            <div>
+                <p class="text">ИНН</p>
+                <input type="text" id="inn" name="inn" value="{{ partner.inn }}" class="input-size" required>
+            </div>
+
+            <div>
+                <p class="text">Почтовый индекс</p>
+                <input type="number" name="postal_code" value="{{ partner.address.postal_code }}" class="input-size" required>
+            </div>
+        </div>
+
+
+        <div style="padding: 0% 25%;">
+            <p class="text">Адрес:</p>
+        </div>
+
+        <div class="text-input">
+            <div>
+                <p class="text">Регион</p>
+                <select name="region" class="input-size" required>
+                    <option value="">Выберите регион</option>
+                    {% for region in regions %}
+                    <option value="{{ region.id }}"
+                            {% if partner.address.region.id == region.id %}selected{% endif %}>
+                        {{ region.name }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <p class="text">Город</p>
+                <select name="city" class="input-size" required>
+                    <option value="">Выберите город</option>
+                    {% for city in cities %}
+                    <option value="{{ city.id }}"
+                            {% if partner.address.city.id == city.id %}selected{% endif %}>
+                        {{ city.name }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <div class="text-input">
+            <div>
+                <p class="text">Улица</p>
+                <select name="street" class="input-size" required>
+                    <option value="">Выберите улицу</option>
+                    {% for street in streets %}
+                    <option value="{{ street.id }}"
+                            {% if partner.address.street.id == street.id %}selected{% endif %}>
+                        {{ street.name }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <p class="text">Дом</p>
+                <input type="number" name="home" class="input-size"
+                       value="{{ partner.address.home }}" required>
+            </div>
+        </div>
+
+    </section>
+    <section class="section-save" style="padding: 0px 0% 20px;">
+        <button type="submit" class="text btn-save">Сохранить</button>
+        <a href="{% url 'partners' %}" class="text btn-cancel">Отмена</a>
+    </section>
+</form>
+
+{% endblock %}

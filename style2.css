@@ -1,0 +1,100 @@
+header {
+    display: flex;
+    background: #F4E8D3;
+    justify-content: space-around;
+    align-items: center;
+    gap: 30px;
+}
+
+.header-text {
+    font-size: 24px;
+    color: #67BA80;
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: bold;
+}
+
+.footer-text {
+    display: flex;
+    justify-content: center;
+}
+
+.flex-container {
+    display: flex;
+    gap: 20px;
+}
+
+.card-container {
+    width: 1019px;
+    height: 270px;
+
+    background: #F4E8D3;
+}
+
+.text-card {
+    font-size: 24px;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.text {
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.fixed-btn {
+    position: fixed;
+    bottom: 40px;    /* Отступ от нижнего края */
+    right: 60px;     /* Отступ от правого края */
+    padding: 20px 45px;
+    background: #67BA80;
+    color: white;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    z-index: 1000;   /* Чтобы была поверх других элементов */
+}
+
+.text-input {
+    display: flex;
+    justify-content: center;
+    gap: 155px;
+}
+
+.section-save {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.btn-save {
+    width: 200px;
+    height: 35px;
+    border-radius: 10px;
+    align-items: center;
+    background: #67BA80;
+    font-size: 20px;
+    cursor: pointer;
+    color: black;
+    border: none;
+}
+.btn-cancel {
+    width: 200px;
+    height: 35px;
+    border-radius: 10px;
+    align-items: center;
+    background: #67BA80;
+    font-size: 20px;
+    cursor: pointer;
+    color: black;
+    border: none;
+}
+
+.input-size {
+    width: 300px;
+    height: 30px;
+    border-radius: 10px;
+    background: #F4E8D3;
+    border: none;
+    text-indent: 10px;
+    font-size: 16px;
+}
+

@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Добавление{% endblock %}
+
+{% block content %}
+<section>
+    <h2 style="padding: 0% 20%; font-size: 32px;">Профиль партнера</h2>
+</section>
+<form method="post">
+    {% csrf_token %}
+
+    <section style="padding: 0px 0% 20px" class="text">
+        <div class="text-input">
+            <div>
+                <p class="text">Партнер</p>
+                <input type="text" id="name" name="name" class="input-size" required>
+            </div>
+            <div>
+                <p class="text">ФИО директора</p>
+                <input type="text" id="director" name="director" class="input-size" required>
+            </div>
+        </div>
+        <div class="text-input">
+            <div>
+                <p class="text">Тип партнера</p>
+                <select name="type_partners" class="input-size" required>
+                    <option value="">Выберите тип</option>
+                    {% for type in type_partners %}
+                    <option value="{{ type.id }}">{{ type.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <p class="text">Телефон</p>
+                <input type="text" id="phone_num" name="phone_num" class="input-size" required>
+            </div>
+        </div>
+
+        <div class="text-input">
+            <div>
+                <p class="text">Рейтинг</p>
+                <input type="number" id="rating" name="rating" class="input-size" required>
+            </div>
+            <div>
+                <p class="text">Email</p>
+                <input type="email" id="email" name="email" class="input-size" required>
+            </div>
+        </div>
+        <div class="text-input">
+            <div>
+                <p class="text">ИНН</p>
+                <input type="text" id="inn" name="inn" class="input-size" required>
+            </div>
+
+            <div>
+                <p class="text">Почтовый индекс</p>
+                <input type="number" name="postal_code" class="input-size" required>
+            </div>
+        </div>
+
+
+        <div style="padding: 0% 25%;">
+            <p class="text">Адрес:</p>
+        </div>
+
+        <div class="text-input">
+            <div>
+                <p class="text">Регион</p>
+                <select name="region" class="input-size" required>
+                    <option value="">Выберите регион</option>
+                    {% for region in regions %}
+                    <option value="{{ region.id }}">{{ region.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <p class="text">Город</p>
+                <select name="city" class="input-size" required>
+                    <option value="">Выберите город</option>
+                    {% for city in cities %}
+                    <option value="{{ city.id }}">{{ city.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <div class="text-input">
+            <div>
+                <p class="text">Улица</p>
+                <select name="street" class="input-size" required>
+                    <option value="">Выберите улицу</option>
+                    {% for street in streets %}
+                    <option value="{{ street.id }}">{{ street.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <p class="text">Дом</p>
+                <input type="number" name="home" class="input-size" required>
+            </div>
+        </div>
+
+    </section>
+    <section class="section-save" style="padding: 0px 0% 20px;">
+        <button style="border: none;" class="text btn-save">Сохранить</button>
+    </section>
+</form>
+
+
+
+{% endblock %}

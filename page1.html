@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Главная страница{% endblock %}
+
+{% block content %}
+
+<section>
+    <div>
+        <p></p>
+    </div>
+    <div style="display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            padding: 20px 0%;">
+        {% for partner in partners %}
+
+        <div class="card-container" style="background: #F4E8D3; margin-left: 30px;">
+            <a href="{% url 'edit_partner' partner.id %}" style="text-decoration: none; color: inherit; display: block;">
+            <div class="flex-container" style="justify-content:
+                    space-between;
+                    margin-right: 50px;
+                    margin-left: 30px;">
+                <p class="text-card">{{ partner.type_partner.name }} | {{partner.name}}</p>
+                <p class="text-card">{{ partner.discount }} %</p>
+            </div>
+            <p class="text-card" style="margin-left: 30px; font-size: 20px;">{{partner.director}}</p>
+            <p class="text-card" style="margin-left: 30px; font-size: 20px;"> +7{{partner.phone_num}}</p>
+            <div class="flex-container" style="align-items: center;
+                    justify-content: space-between;
+                    margin-right: 50px;
+                    margin-left: 30px;">
+                <p class="text-card" style="font-size: 20px;">Рейтинг: {{partner.rating}}</p>
+            </div>
+        </a>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div>
+        <p></p>
+    </div>
+
+    <form action="{% url 'add_page' %}" method="get">
+        <button type="submit" class="fixed-btn">
+            Добавить
+        </button>
+    </form>
+
+</section>
+
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Редактирование{% endblock %}
+
+{% block content %}
+<section>
+    <h2 class="text" style="padding: 0% 20%; font-size: 24px;">История реализации продукции</h2>
+</section>
+<form method="get">
+    <div class="card-container" style="height: 50px; background: #F4E8D3; margin-left: 30px; margin-bottom: 20px; padding: 20px;">
+        <div class="flex-container" style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+            <div style="flex: 1;">
+                <input type="text"
+                       name="name"
+                       value="{{ name_filter }}"
+                       placeholder="Поиск по имени партнера..."
+                       class="text"
+                       style="padding: 12px;
+                              width: 100%;
+                              border: 2px solid #D4B996;
+                              border-radius: 8px;
+                              font-size: 16px;
+                              background: white;">
+            </div>
+
+            <div style="display: flex; gap: 15px; align-items: center;">
+                <button type="submit"
+                        class="text"
+                        style="padding: 12px 24px;
+                               background: #67BA80;
+                               color: white;
+                               border: none;
+                               border-radius: 8px;
+                               cursor: pointer;
+                               font-size: 16px;
+                               font-weight: bold;">
+                    Найти
+                </button>
+
+                {% if name_filter %}
+                <a href="{% url 'history' %}"
+                   class="text"
+                   style="padding: 12px 24px;
+                          background: #67BA80;
+                          color: white;
+                          text-decoration: none;
+                          border-radius: 8px;
+                          font-size: 16px;
+                          font-weight: bold;">
+                    Сбросить
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</form>
+
+<div style="display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            padding: 20px 0%;">
+        {% for partner_product in partners_products %}
+
+        <div class="text card-container" style="background: #F4E8D3; margin-left: 30px;">
+
+            <div class="flex-container" style="justify-content:
+                    space-between;
+                    margin-right: 50px;
+                    margin-left: 30px;">
+                <p class="text-card">{{ partner_product.partner.type_partner.name }} {{ partner_product.partner.name }}</p>
+                <p class="text-card">Цена: {{ partner_product.product.min_price }}</p>
+            </div>
+            <p class="text-card" style="margin-left: 30px; font-size: 20px;">Количество: {{ partner_product.quantity_product }}</p>
+            <p class="text-card" style="margin-left: 30px; font-size: 20px;">Дата продажи: {{ partner_product.date_sale }}</p>
+            <div class="flex-container" style="align-items: center;
+                    justify-content: space-between;
+                    margin-right: 50px;
+                    margin-left: 30px;">
+            </div>
+
+        </div>
+        {% endfor %}
+    </div>
+
+    <div>
+        <p></p>
+    </div>
+
+{% endblock %}
